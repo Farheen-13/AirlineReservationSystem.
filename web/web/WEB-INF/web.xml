@@ -1,0 +1,19 @@
+<web-app>
+  <servlet>
+    <servlet-name>AddFlight</servlet-name>
+    <servlet-class>AddFlightServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFlight</servlet-name>
+    <url-pattern>/addFlight</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewFlights</servlet-name>
+    <servlet-class>ViewFlightsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewFlights</servlet-name>
+    <url-pattern>/viewFlights</url-pattern>
+  </servlet-mapping>
+</web-app>
