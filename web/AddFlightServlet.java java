@@ -1,0 +1,23 @@
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+
+public class AddFlightServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO flights (flight_no, source, destination, departure, arrival, seats) VALUES (?, ?, ?, ?, ?, ?)");
+            ps.setString(1, req.getParameter("flight_no"));
+            ps.setString(2, req.getParameter("source"));
+            ps.setString(3, req.getParameter("destination"));
+            ps.setString(4, req.getParameter("departure").replace("T", " "));
+            ps.setString(5, req.getParameter("arrival").replace("T", " "));
+            ps.setInt(6, Integer.parseInt(req.getParameter("seats")));
+            ps.executeUpdate();
+            res.sendRedirect("index.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
